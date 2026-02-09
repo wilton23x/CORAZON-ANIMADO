@@ -1,42 +1,66 @@
-const texto = document.getElementById("texto");
-const sobre = document.querySelector(".sobre");
-const corazon = document.getElementById("corazonCarta");
-const intro = document.getElementById("intro");
-const contenido = document.getElementById("contenido");
+const mensaje = `
+A pesar de la distancia y del tiempo
+que estaremos incomunicados…
 
-const mensaje = `A pesar de la distancia y del tiempo que estaremos incomunicados,
-quiero desearte lo mejor de corazón.
+quiero que sepas que desde aquí
+te deseo lo mejor, que vas a lograr
+muchas cosas hermosas en tu vida.
 
-Sé que vas a lograr muchas cosas hermosas,
-porque eres fuerte, capaz y muy especial.
+Te quiero mucho, Sofi.
+`;
 
-Te quiero mucho, Sofi.`;
+let index = 0;
 
-let i = 0;
-let escribiendo = false;
+/* ESPERAR A QUE EL DOM CARGUE (CLAVE PARA GITHUB PAGES) */
+document.addEventListener("DOMContentLoaded", () => {
+    const intro = document.getElementById("intro");
+    if (intro) {
+        intro.addEventListener("click", entrar);
+    }
+
+    const sobre = document.querySelector(".sobre");
+    if (sobre) {
+        sobre.addEventListener("click", abrirCarta);
+    }
+});
 
 function entrar() {
-    intro.style.display = "none";
-    contenido.classList.remove("oculto");
+    const intro = document.getElementById("intro");
+    const contenido = document.getElementById("contenido");
+
+    if (intro) intro.style.display = "none";
+    if (contenido) contenido.classList.remove("oculto");
 }
 
 function abrirCarta() {
-    if (!sobre.classList.contains("abierto")) {
-        sobre.classList.add("abierto");
-        if (!escribiendo) {
-            escribiendo = true;
-            escribirTexto();
-        }
-    }
+    const sobre = document.querySelector(".sobre");
+    const texto = document.getElementById("texto");
+    const corazon = document.getElementById("corazonCarta");
+
+    if (!sobre || !texto || !corazon) return;
+
+    sobre.classList.add("abierto");
+
+    texto.innerHTML = "";
+    corazon.innerHTML = "";
+    corazon.style.opacity = 0;
+
+    index = 0;
+    escribirTexto();
 }
 
 function escribirTexto() {
-    if (i < mensaje.length) {
-        texto.innerHTML += mensaje.charAt(i);
-        i++;
-        setTimeout(escribirTexto, 45);
+    const texto = document.getElementById("texto");
+    const corazon = document.getElementById("corazonCarta");
+
+    if (!texto || !corazon) return;
+
+    if (index < mensaje.length) {
+        texto.innerHTML += mensaje.charAt(index);
+        index++;
+        setTimeout(escribirTexto, 120);
     } else {
         corazon.innerHTML = "❤️";
-        corazon.style.opacity = "1";
+        corazon.style.opacity = 1;
     }
 }
