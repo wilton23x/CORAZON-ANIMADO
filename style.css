@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fff3d6, #ffe0ec);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* CONTENEDOR GENERAL */
+.contenedor {
+    position: relative;
+}
+
+/* SOBRE */
+.sobre {
+    width: 380px;
+    background: #ff8fab;
+    border-radius: 14px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+/* TAPA */
+.tapa {
+    width: 100%;
+    height: 180px;
+    background: #ff5d8f;
+    clip-path: polygon(0 0, 100% 0, 50% 60%);
+    transition: transform 1s;
+    transform-origin: top;
+}
+
+.sobre.abierto .tapa {
+    transform: rotateX(180deg);
+}
+
+/* CARTA (CRECE SEGÚN TEXTO) */
+.carta {
+    background: white;
+    width: 90%;
+    margin: -40px auto 0;
+    padding: 20px;
+    border-radius: 12px;
+    box-sizing: border-box;
+
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.sobre.abierto .carta {
+    opacity: 1;
+}
+
+/* CORAZÓN DENTRO DE LA CARTA */
+#corazonCarta {
+    text-align: center;
+    font-size: 64px;
+    margin-top: 16px;
+    opacity: 0;
+    animation: latir 1.3s infinite;
+}
+
+@keyframes latir {
+    0%   { transform: scale(1); }
+    25%  { transform: scale(1.25); }
+    50%  { transform: scale(1); }
+    75%  { transform: scale(1.35); }
+    100% { transform: scale(1); }
+}
+
+/* GIRASOLES */
+.decoracion-girasoles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.girasol {
+    position: absolute;
+    font-size: 50px;
+    opacity: 0.9;
+    animation: flotar 6s ease-in-out infinite;
+}
+
+/* POSICIONES */
+.g1 { top: -35px; left: -35px; }
+.g2 { top: -35px; right: -35px; animation-delay: 1.5s; }
+.g3 { bottom: -35px; left: -35px; animation-delay: 3s; }
+.g4 { bottom: -35px; right: -35px; animation-delay: 4.5s; }
+
+/* ANIMACIÓN GIRASOLES */
+@keyframes flotar {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(6deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
