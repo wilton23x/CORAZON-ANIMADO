@@ -2,12 +2,24 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Para ti 💛</title>
+    <title>Para Sofi 💛</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="contenedor">
+<!-- INTRO -->
+<div id="intro" class="intro" onclick="entrar()">
+    <div class="intro-content">
+        <span class="icon">❤️</span>
+        <h1>PARA SOFI</h1>
+        <span class="icon">🌻</span>
+        <p>Toca para abrir</p>
+    </div>
+</div>
+
+<!-- CONTENIDO -->
+<div class="contenedor oculto" id="contenido">
+
     <div class="sobre" onclick="abrirCarta()">
         <div class="tapa"></div>
 
@@ -24,6 +36,7 @@
         <span class="girasol g3">🌻</span>
         <span class="girasol g4">🌻</span>
     </div>
+
 </div>
 
 <script src="script.js"></script>
